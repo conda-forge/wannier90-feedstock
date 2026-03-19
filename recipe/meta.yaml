@@ -10,12 +10,13 @@ source:
   sha256: 40651a9832eb93dec20a8360dd535262c261c34e13c41b6755fa6915c936b254
 
 build:
-  number: 2
+  number: 3
   skip: True  # [win]
 
 requirements:
   build:
     - {{ compiler('fortran') }}
+    - {{ stdlib("c") }}
     - make
   host:
     - libblas
@@ -45,3 +46,4 @@ about:
 extra:
   recipe-maintainers:
     - jan-janssen
+    - mbercx
