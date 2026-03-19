@@ -180,4 +180,5 @@ Feedstock Maintainers
 =====================
 
 * [@jan-janssen](https://github.com/jan-janssen/)
+* [@mbercx](https://github.com/mbercx/)
 
