@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/wannier90-feeds
 
 Home: http://www.wannier.org/
 
-Package license: GPL-2.0-only
+Package license: LGPL-2.1-only
 
 Summary: The Maximally-Localised Generalised Wannier Functions Code
 
