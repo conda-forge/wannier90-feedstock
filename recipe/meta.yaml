@@ -1,5 +1,5 @@
 {% set name = "wannier90" %}
-{% set version = "4.0.1" %}
+{% set version = "4.0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/wannier-developers/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 3700372489435fc3165b2b213c22708cc947babd96e652641fad84240191c1dd
+  sha256: 2d48b371eefa8b58a6c8088c1bdffc13fe3e761111e15c8566e2ee055d8bcdb0
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
 
 requirements:
