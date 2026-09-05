@@ -1,0 +1,55 @@
+schema_version: 1
+
+context:
+  name: wannier90
+  version: "4.0.1"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/wannier-developers/${{ name }}/archive/v${{ version }}.tar.gz
+  sha256: 3700372489435fc3165b2b213c22708cc947babd96e652641fad84240191c1dd
+
+build:
+  number: 2
+  skip: win
+
+requirements:
+  build:
+    - ${{ compiler('fortran') }}
+    - ${{ stdlib("c") }}
+    - make
+    - if: build_platform != target_platform
+      then: openmpi
+  host:
+    - openmpi
+    - libblas
+    - liblapack
+  run:
+    - openmpi
+
+tests:
+  - script:
+      - test -x ${PREFIX}/bin/wannier90.x
+      - test -x ${PREFIX}/bin/postw90.x
+
+about:
+  license: LGPL-2.1-only
+  license_file: LICENSE
+  summary: The Maximally-Localised Generalised Wannier Functions Code
+  description: |
+    Wannier90 is an open-source code (released under GPLv2) for
+    generating maximally-localized Wannier functions and using them
+    to compute advanced electronic properties of materials with high
+    efficiency and accuracy.
+  homepage: http://www.wannier.org/
+  repository: https://github.com/wannier-developers/wannier90
+  documentation: https://github.com/wannier-developers/wannier90/tree/master/doc
+
+extra:
+  recipe-maintainers:
+    - edan-bainglass
+    - jan-janssen
+    - mbercx
