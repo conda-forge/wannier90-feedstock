@@ -34,11 +34,12 @@ cat make.inc
 echo "=============================="
 echo "MPIF90=${MPIF90}"
 
-if [[ "${target_platform:-}" == "linux-aarch64" ]]; then
-  sed -i \
-    "s/(3\.0e-6, 3\.0e-6, 'final_spreads')/(1.0e-5, 1.0e-5, 'final_spreads')/" \
-    test-suite/tests/userconfig
-fi
+sed \
+  -e '/^wannier90_proj_auto_wout:/,/^[^[:space:]]/s/^    omegaD:.*/    omegaD: {abs: 1.1e-6, rel: 6.0e-6}/' \
+  -e '/^wannier90_slwfc_wout:/,/^[^[:space:]]/s/^    final_spreads:.*/    final_spreads: {abs: 4.0e-6, rel: 4.0e-6}/' \
+  -e '/^wannier90_slwfc_wout:/,/^[^[:space:]]/s/^    omegaRest:.*/    omegaRest: {abs: 1.1e-5, rel: 1.1e-5}/' \
+  test-suite/profiles.yaml > test-suite/profiles.yaml.tmp
+mv test-suite/profiles.yaml.tmp test-suite/profiles.yaml
 
 make wannier -j "${CPU_COUNT:-1}"
 
