@@ -18,6 +18,8 @@ requirements:
     - {{ compiler('fortran') }}
     - {{ stdlib("c") }}
     - make
+    - pytest
+    - pyyaml
     - openmpi  # [build_platform != target_platform]
   host:
     - openmpi
